@@ -4,7 +4,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const profileButton = document.getElementById('profile-btn');
     const searchButtonTop = document.getElementById('search-btn-top');
 
-    // Define the content for each page
+    const cardData = [
+        {
+            id: 1,
+            category: 'Doctors',
+            title: 'Dr. John Doe',
+            imageUrl: 'doctor1.jpg'
+        },
+        {
+            id: 2,
+            category: 'Hospitals',
+            title: 'City General Hospital',
+            imageUrl: 'hospital1.jpg'
+        },
+        {
+            id: 3,
+            category: 'Insurers',
+            title: 'HealthGuard Insurance',
+            imageUrl: 'insurer1.png'
+        },
+        {
+            id: 4,
+            category: 'Well being',
+            title: 'Mindful Moments',
+            imageUrl: 'hospital2.jpg' // Using hospital2.jpg as a placeholder for Well being
+        },
+        {
+            id: 5,
+            category: 'Doctors',
+            title: 'Dr. Jane Smith',
+            imageUrl: 'doctor2.jpg'
+        },
+        {
+            id: 6,
+            category: 'Hospitals',
+            title: 'Sunset Valley Hospital',
+            imageUrl: 'hospital2.jpg'
+        },
+        {
+            id: 7,
+            category: 'Insurers',
+            title: 'SecureLife Insurance',
+            imageUrl: 'insurer2.jpg'
+        }
+    ];
+
     const pageData = {
         home: {
             title: 'Home',
@@ -17,11 +61,18 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Search',
             content: `
                 <div class="search-container">
-                    <h1>Search</h1>
                     <div class="search-input-group">
                         <input type="text" id="search-input" placeholder="Type to search...">
                         <button class="search-submit-btn"><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
                     </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="Doctors">Doctors</button>
+                        <button class="filter-btn" data-filter="Hospitals">Hospitals</button>
+                        <button class="filter-btn" data-filter="Insurers">Insurers</button>
+                        <button class="filter-btn" data-filter="Well being">Well being</button>
+                    </div>
+                    <div id="card-container" class="card-container"></div>
                 </div>
             `
         },
@@ -58,18 +109,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Function to update the page content
+    function renderCards(filter = 'all') {
+        const cardContainer = document.getElementById('card-container');
+        if (!cardContainer) return;
+
+        const filteredCards = cardData.filter(card => filter === 'all' || card.category === filter);
+
+        cardContainer.innerHTML = filteredCards.map(card => `
+            <div class="card" style="background-image: url('images/${card.imageUrl}')">
+                <h3>${card.title}</h3>
+            </div>
+        `).join('');
+    }
+
     function updatePageContent(pageName) {
         contentArea.innerHTML = pageData[pageName].content;
 
-        // Add event listeners for the new aid buttons if we are on the 'aids' page
         if (pageName === 'aids') {
             const panicAttackBtn = document.getElementById('panic-attack-btn');
             const medicalHelpBtn = document.getElementById('medical-help-btn');
 
             if (panicAttackBtn) {
                 panicAttackBtn.addEventListener('click', () => {
-                    // Logic for panic attack help
                     contentArea.innerHTML = `
                         <h2>Panic Attack Aid</h2>
                         <p>1. Find a comfortable place to sit.</p>
@@ -83,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (medicalHelpBtn) {
                 medicalHelpBtn.addEventListener('click', () => {
-                    // Logic for general medical help
                     contentArea.innerHTML = `
                         <h2>Medical Help</h2>
                         <p>In case of a medical emergency, please:</p>
@@ -94,28 +154,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     `;
                 });
             }
-        }
-        if (pageName === 'search') {
+        } else if (pageName === 'search') {
             const searchInput = document.getElementById('search-input');
             if (searchInput) {
                 searchInput.focus();
             }
+            renderCards();
+
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const filter = button.dataset.filter;
+                    renderCards(filter);
+                });
+            });
         }
     }
 
-    // Event listener for the top profile button
     profileButton.addEventListener('click', () => {
         updatePageContent('profile');
         navButtons.forEach(btn => btn.classList.remove('active'));
     });
 
-    // Event listener for the top search button
     searchButtonTop.addEventListener('click', () => {
         updatePageContent('search');
         navButtons.forEach(btn => btn.classList.remove('active'));
     });
 
-    // Add event listener to each navigation button
     navButtons.forEach(button => {
         button.addEventListener('click', () => {
             navButtons.forEach(btn => btn.classList.remove('active'));
@@ -125,13 +192,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Event delegation for the back button
     contentArea.addEventListener('click', (event) => {
         if (event.target.classList.contains('back-button')) {
             updatePageContent('aids');
         }
     });
 
-    // Initially load the home page
     updatePageContent('home');
 });
