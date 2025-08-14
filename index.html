@@ -3,19 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health App</title>
+    <title>Responsive Nav App</title>
+    <!-- 
+        This link tag connects to your CSS file. 
+        It assumes 'style.css' is in the same folder as this HTML file. 
+    -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Use Inter font for a modern, clean look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Health App</h1>
+    <!-- App Header with Profile and Search icons -->
+    <header class="app-header">
+        <button class="header-button" id="profile-btn">
+            <i class="fas fa-user-circle"></i>
+        </button>
+        <button class="header-button" id="search-btn-top">
+            <i class="fas fa-search"></i>
+        </button>
     </header>
-    <main>
-        <!-- App content will go here -->
-    </main>
-    <footer>
-        <p>&copy; 2025 Health App</p>
-    </footer>
+
+    <div class="content">
+        <!-- The content will be dynamically loaded here based on the active page -->
+        <h1 id="page-title">Home</h1>
+        <p id="page-content">Welcome to the Home page! This is the main landing area of the app.</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <button class="nav-button active" data-page="home">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </button>
+        <!-- The search button has been removed from the bottom navigation bar -->
+        <button class="nav-button" data-page="community">
+            <i class="fas fa-users"></i>
+            <span>Community</span>
+        </button>
+        <button class="nav-button" data-page="profile">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </button>
+    </div>
+
+    <!-- 
+        This script tag connects to your JavaScript file. 
+        It assumes 'script.js' is in the same folder as this HTML file. 
+    -->
     <script src="js/script.js"></script>
 </body>
 </html>
