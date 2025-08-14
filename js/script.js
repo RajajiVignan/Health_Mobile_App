@@ -13,6 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Welcome to the Medical Aid App! This app is designed to provide quick and reliable information during medical emergencies, especially panic attacks.</p>
             `
         },
+        search: {
+            title: 'Search',
+            content: `
+                <div class="search-container">
+                    <h1>Search</h1>
+                    <div class="search-input-group">
+                        <input type="text" id="search-input" placeholder="Type to search...">
+                        <button class="search-submit-btn"><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            `
+        },
         aids: {
             title: 'Aids',
             content: `
