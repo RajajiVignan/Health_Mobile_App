@@ -7,92 +7,188 @@ function detectDevice() {
 // Device-specific settings content
 const deviceSettings = {
     mobile: `
-        <div class="list-item">
-            <i class="fas fa-bell"></i>
-            <span class="item-label">Notifications</span>
-            <label class="toggle-switch">
-                <input type="checkbox" checked>
-                <span class="toggle-slider"></span>
-            </label>
+        <div class="settings-group">
+            <h3>Account</h3>
+            <div class="list-item">
+                <i class="fas fa-user"></i>
+                <span class="item-label">Profile</span>
+                <span class="item-value">John Doe</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="list-item">
+                <i class="fas fa-envelope"></i>
+                <span class="item-label">Email</span>
+                <span class="item-value">john@example.com</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="list-item">
+                <i class="fas fa-phone"></i>
+                <span class="item-label">Phone</span>
+                <span class="item-value">+91 XXXXXXXXXX</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
         </div>
-        <div class="list-item">
-            <i class="fas fa-location-dot"></i>
-            <span class="item-label">Location Services</span>
-            <label class="toggle-switch">
-                <input type="checkbox">
-                <span class="toggle-slider"></span>
-            </label>
+
+        <div class="settings-group">
+            <h3>Privacy & Security</h3>
+            <div class="list-item">
+                <i class="fas fa-shield-alt"></i>
+                <span class="item-label">Privacy Settings</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="list-item">
+                <i class="fas fa-location-dot"></i>
+                <span class="item-label">Location Services</span>
+                <label class="toggle-switch">
+                    <input type="checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
         </div>
-        <div class="list-item">
-            <i class="fas fa-envelope"></i>
-            <span class="item-label">Email</span>
-            <span class="item-value">john@example.com</span>
-            <i class="fas fa-chevron-right"></i>
+
+        <div class="settings-group">
+            <h3>Preferences</h3>
+            <div class="list-item">
+                <i class="fas fa-bell"></i>
+                <span class="item-label">Notifications</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="list-item">
+                <i class="fas fa-moon"></i>
+                <span class="item-label">Dark Mode</span>
+                <label class="toggle-switch">
+                    <input type="checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
         </div>
-        <div class="list-item">
-            <i class="fas fa-phone"></i>
-            <span class="item-label">Phone</span>
-            <span class="item-value">+91 XXXXXXXXXX</span>
-            <i class="fas fa-chevron-right"></i>
+
+        <div class="settings-group">
+            <h3>Connect</h3>
+            <div class="list-item">
+                <i class="fas fa-share-alt"></i>
+                <span class="item-label">Social Accounts</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="list-item">
+                <i class="fas fa-user-plus"></i>
+                <span class="item-label">Invite Friends</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
         </div>
-        <div class="list-item" id="terms-container">
-            <i class="fas fa-file-contract"></i>
-            <span class="item-label">Terms & Conditions</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
-        <div class="list-item">
-            <i class="fas fa-circle-info"></i>
-            <span class="item-label">About</span>
-            <span class="item-value">Version 1.0.0</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
-        <div class="list-item">
-            <i class="fas fa-headset"></i>
-            <span class="item-label">Support</span>
-            <i class="fas fa-chevron-right"></i>
+
+        <div class="settings-group">
+            <h3>Support</h3>
+            <div class="list-item">
+                <i class="fas fa-headset"></i>
+                <span class="item-label">Help Center</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="list-item" id="terms-container">
+                <i class="fas fa-file-contract"></i>
+                <span class="item-label">Terms & Conditions</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="list-item">
+                <i class="fas fa-circle-info"></i>
+                <span class="item-label">About</span>
+                <span class="item-value">Version 1.0.0</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
         </div>
     `,
     laptop: `
-        <div class="list-item">
-            <i class="fas fa-moon"></i>
-            <span class="item-label">Dark Mode</span>
-            <label class="toggle-switch">
-                <input type="checkbox">
-                <span class="toggle-slider"></span>
-            </label>
+        <div class="settings-group">
+            <h3>Account</h3>
+            <div class="list-item">
+                <i class="fas fa-user"></i>
+                <span class="item-label">Profile</span>
+                <span class="item-value">John Doe</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="list-item">
+                <i class="fas fa-envelope"></i>
+                <span class="item-label">Email</span>
+                <span class="item-value">john@example.com</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="list-item">
+                <i class="fas fa-phone"></i>
+                <span class="item-label">Phone</span>
+                <span class="item-value">+91 XXXXXXXXXX</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
         </div>
-        <div class="list-item">
-            <i class="fas fa-keyboard"></i>
-            <span class="item-label">Keyboard Shortcuts</span>
-            <i class="fas fa-chevron-right"></i>
+
+        <div class="settings-group">
+            <h3>Privacy & Security</h3>
+            <div class="list-item">
+                <i class="fas fa-shield-alt"></i>
+                <span class="item-label">Privacy Settings</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="list-item">
+                <i class="fas fa-keyboard"></i>
+                <span class="item-label">Keyboard Shortcuts</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
         </div>
-        <div class="list-item">
-            <i class="fas fa-envelope"></i>
-            <span class="item-label">Email</span>
-            <span class="item-value">john@example.com</span>
-            <i class="fas fa-chevron-right"></i>
+
+        <div class="settings-group">
+            <h3>Preferences</h3>
+            <div class="list-item">
+                <i class="fas fa-bell"></i>
+                <span class="item-label">Notifications</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="list-item">
+                <i class="fas fa-moon"></i>
+                <span class="item-label">Dark Mode</span>
+                <label class="toggle-switch">
+                    <input type="checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
         </div>
-        <div class="list-item">
-            <i class="fas fa-phone"></i>
-            <span class="item-label">Phone</span>
-            <span class="item-value">+91 XXXXXXXXXX</span>
-            <i class="fas fa-chevron-right"></i>
+
+        <div class="settings-group">
+            <h3>Connect</h3>
+            <div class="list-item">
+                <i class="fas fa-share-alt"></i>
+                <span class="item-label">Social Accounts</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="list-item">
+                <i class="fas fa-user-plus"></i>
+                <span class="item-label">Invite Friends</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
         </div>
-        <div class="list-item" id="terms-container">
-            <i class="fas fa-file-contract"></i>
-            <span class="item-label">Terms & Conditions</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
-        <div class="list-item">
-            <i class="fas fa-circle-info"></i>
-            <span class="item-label">About</span>
-            <span class="item-value">Version 1.0.0</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
-        <div class="list-item">
-            <i class="fas fa-headset"></i>
-            <span class="item-label">Support</span>
-            <i class="fas fa-chevron-right"></i>
+
+        <div class="settings-group">
+            <h3>Support</h3>
+            <div class="list-item">
+                <i class="fas fa-headset"></i>
+                <span class="item-label">Help Center</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="list-item" id="terms-container">
+                <i class="fas fa-file-contract"></i>
+                <span class="item-label">Terms & Conditions</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="list-item">
+                <i class="fas fa-circle-info"></i>
+                <span class="item-label">About</span>
+                <span class="item-value">Version 1.0.0</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
         </div>
     `
 };
@@ -293,6 +389,46 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
     }
 
+    // Function to handle notifications permission
+    async function handleNotificationsPermission() {
+        try {
+            const permission = await Notification.requestPermission();
+            return permission === 'granted';
+        } catch (error) {
+            console.error('Error requesting notification permission:', error);
+            return false;
+        }
+    }
+
+    // Function to handle location permission
+    async function handleLocationPermission() {
+        try {
+            const position = await new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(resolve, reject);
+            });
+            return true;
+        } catch (error) {
+            console.error('Error requesting location permission:', error);
+            return false;
+        }
+    }
+
+    // Function to handle dark mode
+    function handleDarkMode(enabled) {
+        document.body.classList.toggle('dark-mode', enabled);
+        localStorage.setItem('darkMode', enabled);
+    }
+
+    // Function to edit profile information
+    function editProfileItem(type, currentValue) {
+        const newValue = prompt(`Enter new ${type}:`, currentValue);
+        if (newValue && newValue.trim()) {
+            localStorage.setItem(`profile_${type}`, newValue);
+            return newValue;
+        }
+        return currentValue;
+    }
+
     function updatePageContent(pageName) {
         contentArea.innerHTML = pageData[pageName].content;
         
@@ -311,14 +447,124 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                // Add click handlers for settings items
-                document.querySelectorAll('.setting-item').forEach(item => {
-                    item.addEventListener('click', function() {
-                        const label = this.querySelector('.setting-label').textContent;
-                        if (label === 'Terms & Conditions' && !areTermsAccepted()) {
-                            showTermsModal();
-                        }
-                    });
+                // Initialize dark mode if available
+                if (deviceType === 'laptop') {
+                    const darkModeToggle = settingsContainer.querySelector('input[type="checkbox"]');
+                    if (darkModeToggle) {
+                        darkModeToggle.checked = localStorage.getItem('darkMode') === 'true';
+                        darkModeToggle.addEventListener('change', (e) => {
+                            handleDarkMode(e.target.checked);
+                        });
+                    }
+                }
+
+                // Add click handlers for all list items
+                settingsContainer.querySelectorAll('.list-item').forEach(item => {
+                    const label = item.querySelector('.item-label').textContent;
+                    const valueSpan = item.querySelector('.item-value');
+                    
+                    switch(label) {
+                        case 'Profile':
+                            item.addEventListener('click', () => {
+                                const newName = editProfileItem('name', valueSpan.textContent);
+                                if (newName) {
+                                    valueSpan.textContent = newName;
+                                    document.querySelector('.profile-header h2').textContent = newName;
+                                }
+                            });
+                            break;
+
+                        case 'Email':
+                            item.addEventListener('click', () => {
+                                const newEmail = editProfileItem('email', valueSpan.textContent);
+                                if (newEmail) valueSpan.textContent = newEmail;
+                            });
+                            break;
+
+                        case 'Phone':
+                            item.addEventListener('click', () => {
+                                const newPhone = editProfileItem('phone', valueSpan.textContent);
+                                if (newPhone) valueSpan.textContent = newPhone;
+                            });
+                            break;
+
+                        case 'Notifications':
+                            const notifToggle = item.querySelector('input[type="checkbox"]');
+                            if (notifToggle) {
+                                notifToggle.addEventListener('change', async (e) => {
+                                    const granted = await handleNotificationsPermission();
+                                    notifToggle.checked = granted;
+                                    localStorage.setItem('notifications_enabled', granted);
+                                });
+                                // Set initial state
+                                notifToggle.checked = localStorage.getItem('notifications_enabled') === 'true';
+                            }
+                            break;
+
+                        case 'Location Services':
+                            const locToggle = item.querySelector('input[type="checkbox"]');
+                            if (locToggle) {
+                                locToggle.addEventListener('change', async (e) => {
+                                    const granted = await handleLocationPermission();
+                                    locToggle.checked = granted;
+                                    localStorage.setItem('location_enabled', granted);
+                                });
+                                // Set initial state
+                                locToggle.checked = localStorage.getItem('location_enabled') === 'true';
+                            }
+                            break;
+
+                        case 'Dark Mode':
+                            const darkModeToggle = item.querySelector('input[type="checkbox"]');
+                            if (darkModeToggle) {
+                                darkModeToggle.checked = localStorage.getItem('darkMode') === 'true';
+                                darkModeToggle.addEventListener('change', (e) => {
+                                    handleDarkMode(e.target.checked);
+                                });
+                            }
+                            break;
+
+                        case 'Social Accounts':
+                            item.addEventListener('click', () => {
+                                alert('Connect to your social media accounts');
+                                // Here you would typically implement OAuth flow
+                            });
+                            break;
+
+                        case 'Invite Friends':
+                            item.addEventListener('click', () => {
+                                if (navigator.share) {
+                                    navigator.share({
+                                        title: 'Medical Aid App',
+                                        text: 'Join me on Medical Aid App!',
+                                        url: window.location.href
+                                    }).catch(console.error);
+                                } else {
+                                    alert('Share this link with your friends: ' + window.location.href);
+                                }
+                            });
+                            break;
+
+                        case 'Privacy Settings':
+                            item.addEventListener('click', () => {
+                                alert('Manage your privacy settings');
+                                // Implement privacy settings UI
+                            });
+                            break;
+
+                        case 'Help Center':
+                            item.addEventListener('click', () => {
+                                alert('Opening Help Center');
+                                // Implement help center navigation
+                            });
+                            break;
+
+                        case 'Terms & Conditions':
+                            if (!areTermsAccepted()) {
+                                item.addEventListener('click', showTermsModal);
+                            }
+                            break;
+                    }
                 });
             }
         }
