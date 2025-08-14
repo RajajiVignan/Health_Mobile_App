@@ -154,6 +154,53 @@ body {
     color: var(--primary-color);
 }
 
+/* New styles for the 'Aids' page buttons */
+.aid-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.aid-button {
+    background-color: #fff;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 12px;
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.aid-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.back-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #3b7ad8;
+}
+
 /* Responsive adjustments for larger screens (e.g., tablets/desktops) */
 @media (min-width: 600px) {
     .search-container {
