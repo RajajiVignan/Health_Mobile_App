@@ -1,3 +1,147 @@
+// Function to detect device type
+function detectDevice() {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
+    return isMobile ? 'mobile' : 'laptop';
+}
+
+// Device-specific settings content
+const deviceSettings = {
+    mobile: `
+        <div class="list-item">
+            <i class="fas fa-bell"></i>
+            <span class="item-label">Notifications</span>
+            <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+        <div class="list-item">
+            <i class="fas fa-location-dot"></i>
+            <span class="item-label">Location Services</span>
+            <label class="toggle-switch">
+                <input type="checkbox">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+        <div class="list-item">
+            <i class="fas fa-envelope"></i>
+            <span class="item-label">Email</span>
+            <span class="item-value">john@example.com</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="list-item">
+            <i class="fas fa-phone"></i>
+            <span class="item-label">Phone</span>
+            <span class="item-value">+91 XXXXXXXXXX</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="list-item" id="terms-container">
+            <i class="fas fa-file-contract"></i>
+            <span class="item-label">Terms & Conditions</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="list-item">
+            <i class="fas fa-circle-info"></i>
+            <span class="item-label">About</span>
+            <span class="item-value">Version 1.0.0</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="list-item">
+            <i class="fas fa-headset"></i>
+            <span class="item-label">Support</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    `,
+    laptop: `
+        <div class="list-item">
+            <i class="fas fa-moon"></i>
+            <span class="item-label">Dark Mode</span>
+            <label class="toggle-switch">
+                <input type="checkbox">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+        <div class="list-item">
+            <i class="fas fa-keyboard"></i>
+            <span class="item-label">Keyboard Shortcuts</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="list-item">
+            <i class="fas fa-envelope"></i>
+            <span class="item-label">Email</span>
+            <span class="item-value">john@example.com</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="list-item">
+            <i class="fas fa-phone"></i>
+            <span class="item-label">Phone</span>
+            <span class="item-value">+91 XXXXXXXXXX</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="list-item" id="terms-container">
+            <i class="fas fa-file-contract"></i>
+            <span class="item-label">Terms & Conditions</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="list-item">
+            <i class="fas fa-circle-info"></i>
+            <span class="item-label">About</span>
+            <span class="item-value">Version 1.0.0</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="list-item">
+            <i class="fas fa-headset"></i>
+            <span class="item-label">Support</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    `
+};
+
+// Function to check if terms are accepted
+function areTermsAccepted() {
+    return localStorage.getItem('termsAccepted') === 'true';
+}
+
+// Function to show terms modal
+function showTermsModal() {
+    const modal = document.createElement('div');
+    modal.className = 'terms-modal';
+    modal.style.display = 'flex';
+    modal.innerHTML = `
+        <div class="terms-content">
+            <h2>Terms & Conditions</h2>
+            <div class="terms-text">
+                <p>Welcome to our Medical Aid App. By using this application, you agree to:</p>
+                <ul>
+                    <li>Use the app responsibly and follow medical advice</li>
+                    <li>Protect your personal information</li>
+                    <li>Respect community guidelines</li>
+                    <li>Understand this is not a substitute for professional medical care</li>
+                </ul>
+            </div>
+            <div class="terms-buttons">
+                <button class="terms-btn decline">Decline</button>
+                <button class="terms-btn accept">Accept</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    modal.querySelector('.accept').addEventListener('click', () => {
+        localStorage.setItem('termsAccepted', 'true');
+        modal.remove();
+        const termsContainer = document.getElementById('terms-container');
+        if (termsContainer) {
+            termsContainer.style.display = 'none';
+        }
+    });
+
+    modal.querySelector('.decline').addEventListener('click', () => {
+        modal.remove();
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const navButtons = document.querySelectorAll('.nav-button');
     const contentArea = document.querySelector('.content');
@@ -103,8 +247,35 @@ document.addEventListener('DOMContentLoaded', () => {
         profile: {
             title: 'Profile',
             content: `
-                <h1>Profile</h1>
-                <p>This is your Profile page. You can view and edit your personal details here.</p>
+                <div class="profile-container">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h2>John Doe</h2>
+                        <p>Edit Profile</p>
+                    </div>
+                    <div class="profile-list" id="device-specific-settings"></div>
+                    <div class="made-in-india">Made with <i class="fas fa-heart"></i> in India</div>
+                </div>
+            `
+        },
+        settings: {
+            title: 'Settings',
+            content: `
+                <h1>Settings</h1>
+                <div class="settings-container">
+                    <div class="settings-section">
+                        <h2>Mobile Settings</h2>
+                        <p>Terms and Conditions for mobile users.</p>
+                        <p>Profile-related settings for mobile users.</p>
+                    </div>
+                    <div class="settings-section">
+                        <h2>Laptop Settings</h2>
+                        <p>Terms and Conditions for laptop users.</p>
+                        <p>Profile-related settings for laptop users.</p>
+                    </div>
+                </div>
             `
         }
     };
@@ -124,6 +295,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updatePageContent(pageName) {
         contentArea.innerHTML = pageData[pageName].content;
+        
+        // Load device-specific settings if on profile page
+        if (pageName === 'profile') {
+            const deviceType = detectDevice();
+            const settingsContainer = document.getElementById('device-specific-settings');
+            if (settingsContainer) {
+                settingsContainer.innerHTML = deviceSettings[deviceType];
+                
+                // Hide terms and conditions if already accepted
+                if (areTermsAccepted()) {
+                    const termsContainer = document.getElementById('terms-container');
+                    if (termsContainer) {
+                        termsContainer.style.display = 'none';
+                    }
+                }
+
+                // Add click handlers for settings items
+                document.querySelectorAll('.setting-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        const label = this.querySelector('.setting-label').textContent;
+                        if (label === 'Terms & Conditions' && !areTermsAccepted()) {
+                            showTermsModal();
+                        }
+                    });
+                });
+            }
+        }
 
         if (pageName === 'aids') {
             const panicAttackBtn = document.getElementById('panic-attack-btn');
@@ -197,6 +395,24 @@ document.addEventListener('DOMContentLoaded', () => {
             updatePageContent('aids');
         }
     });
+
+    // Function to handle settings button clicks
+    function handleSettingClick(settingType, deviceType) {
+        // Here you can implement specific actions for each setting
+        switch(settingType) {
+            case 'App Permissions':
+            case 'Display Preferences':
+                alert(`Configuring ${settingType} for ${deviceType}`);
+                break;
+            case 'Data Usage':
+            case 'Keyboard Shortcuts':
+                alert(`Managing ${settingType} for ${deviceType}`);
+                break;
+            case 'Terms & Conditions':
+                alert(`Viewing Terms & Conditions for ${deviceType}`);
+                break;
+        }
+    }
 
     updatePageContent('home');
 });
