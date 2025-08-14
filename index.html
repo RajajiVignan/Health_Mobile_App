@@ -18,40 +18,40 @@
 </head>
 <body>
     <!-- App Header with Profile and Search icons -->
-    <header class="app-header">
-        <button class="header-button" id="profile-btn">
-            <i class="fas fa-user-circle"></i>
+    <header class="app-header" role="banner">
+        <button class="header-button" id="profile-btn" aria-label="Open Profile">
+            <i class="fas fa-user-circle" aria-hidden="true"></i>
         </button>
-        <button class="header-button" id="search-btn-top">
-            <i class="fas fa-search"></i>
+        <button class="header-button" id="search-btn-top" aria-label="Open Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
         </button>
     </header>
 
-    <div class="content">
+    <main class="content">
         <!-- The content will be dynamically loaded here based on the active page -->
         <h1 id="page-title">Home</h1>
         <p id="page-content">Welcome to the Home page! This is the main landing area of the app.</p>
-    </div>
+    </main>
 
     <!-- Navigation Bar -->
-    <div class="nav-bar">
+    <nav class="nav-bar">
         <button class="nav-button active" data-page="home">
-            <i class="fas fa-home"></i>
+            <i class="fas fa-home" aria-hidden="true"></i>
             <span>Home</span>
         </button>
         <button class="nav-button" data-page="aids">
-            <i class="fas fa-heartbeat"></i>
+            <i class="fas fa-heartbeat" aria-hidden="true"></i>
             <span>Aids</span>
         </button>
         <button class="nav-button" data-page="community">
-            <i class="fas fa-users"></i>
+            <i class="fas fa-users" aria-hidden="true"></i>
             <span>Community</span>
         </button>
         <button class="nav-button" data-page="profile">
-            <i class="fas fa-user"></i>
+            <i class="fas fa-user" aria-hidden="true"></i>
             <span>Profile</span>
         </button>
-    </div>
+    </nav>
 
     <!-- 
         This script tag connects to your JavaScript file. 

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const contentArea = document.querySelector('.content');
     const profileButton = document.getElementById('profile-btn');
     const searchButtonTop = document.getElementById('search-btn-top');
-    
+
     // Define the content for each page
     const pageData = {
         home: {
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to update the page content
     function updatePageContent(pageName) {
         contentArea.innerHTML = pageData[pageName].content;
-        
+
         // Add event listeners for the new aid buttons if we are on the 'aids' page
         if (pageName === 'aids') {
             const panicAttackBtn = document.getElementById('panic-attack-btn');
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>2. Focus on your breathing. Inhale for 4 seconds, hold for 7, exhale for 8.</p>
                         <p>3. Acknowledge your feelings and remind yourself that this will pass.</p>
                         <p>4. Listen to soothing music or a guided meditation.</p>
-                        <button class="back-button" onclick="updatePageContent('aids')">Back</button>
+                        <button class="back-button">Back</button>
                     `;
                 });
             }
@@ -78,13 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>1. Call your local emergency number (e.g., 911, 112).</p>
                         <p>2. Provide your location and a brief description of the situation.</p>
                         <p>3. Do not hang up until instructed by the dispatcher.</p>
-                        <button class="back-button" onclick="updatePageContent('aids')">Back</button>
+                        <button class="back-button">Back</button>
                     `;
                 });
             }
         }
+        if (pageName === 'search') {
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.focus();
+            }
+        }
     }
-    
+
     // Event listener for the top profile button
     profileButton.addEventListener('click', () => {
         updatePageContent('profile');
@@ -105,6 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const pageName = button.dataset.page;
             updatePageContent(pageName);
         });
+    });
+
+    // Event delegation for the back button
+    contentArea.addEventListener('click', (event) => {
+        if (event.target.classList.contains('back-button')) {
+            updatePageContent('aids');
+        }
     });
 
     // Initially load the home page

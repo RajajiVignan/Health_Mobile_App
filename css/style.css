@@ -1,6 +1,6 @@
 /* Global Styles & Variables */
 :root {
-    --primary-color: #4a90e2;
+    --primary-color: #2D65A7;
     --secondary-color: #f6f6f6;
     --text-color: #333;
     --nav-bg: #fff;
@@ -129,7 +129,7 @@ body {
 .nav-button {
     background: none;
     border: none;
-    color: #888;
+    color: #777;
     font-size: 0.7em;
     font-weight: 600;
     cursor: pointer;
